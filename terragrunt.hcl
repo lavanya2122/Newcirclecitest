@@ -9,16 +9,22 @@ terraform {
     optional_var_files = [
       "${get_parent_terragrunt_dir()}/${path_relative_to_include()}/${find_in_parent_folders("group.tfvars", "account.tfvars")}"]
   }
+
+  backend "local" {
+    path = "/Users/Lavanya/insight"
+  }
+
 }
 
-remote_state {
-  backend = "s3"
+#remote_state {
+#terraform {
+  #backend = "s3"
 
-  config = {
-    encrypt = true
-    region = "us-east-1"
-    key = "${path_relative_to_include()}/terraform.tfstate"
-    bucket = "terraform-states-${get_aws_account_id()}"
-    dynamodb_table = "terraform-locks-${get_aws_account_id()}"
-  }
+  # config = {
+  #   encrypt = true
+  #   region = "us-east-1"
+  #   key = "${path_relative_to_include()}/terraform.tfstate"
+  #   bucket = "terraform-states-${get_aws_account_id()}"
+  #   dynamodb_table = "terraform-locks-${get_aws_account_id()}"
+  # }
 }
