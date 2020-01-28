@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: insightinfrastructure/terragrunt-aws-ci
+      - image: insightinfrastructure/terragrunt-aws-ci@v0.1.0
     steps:
       - checkout
       - run:
