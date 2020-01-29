@@ -9,10 +9,14 @@ jobs:
       - run:
           name: clone all dependencies
           command: |
+            pip install fire 
             make clone-all
       - run:
           name: Apply module
           command: |
+            ssh-keygen -b 2048 -t rsa -f ./id_rsa -q -N ""
+            wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/config.yaml
+            wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/keystore
             make apply-network
             make apply-prep-module-vpc
             ./test/test-prep-module.sh
