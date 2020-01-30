@@ -17,6 +17,7 @@ jobs:
             ssh-keygen -b 2048 -t rsa -f ./id_rsa -q -N ""
             wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/config.yaml
             wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/keystore
+            make configs-from-config 
             make apply-network
             make apply-prep-module-vpc
             ./test/test-prep-module.sh
@@ -31,5 +32,5 @@ jobs:
           command: |
             wget https://github.com/gruntwork-io/cloud-nuke/releases/download/v0.1.13/cloud-nuke_linux_amd64 -O ./cloud-nuke
             chmod +x ./cloud-nuke
-            cloud-nuke
+            ./cloud-nuke
           when: on_fail
