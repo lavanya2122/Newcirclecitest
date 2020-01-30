@@ -13,8 +13,7 @@ jobs:
             make clone-all
       - run:
           name: Apply module
-          command: |
-            sudo apt install rysnc
+          command: 
             ssh-keygen -b 2048 -t rsa -f ./id_rsa -q -N ""
             wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/config.yaml
             wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/keystore
