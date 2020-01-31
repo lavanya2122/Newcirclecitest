@@ -18,6 +18,7 @@ jobs:
             wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/config.yaml
             wget https://prep-registration-helped-reindeer.s3.amazonaws.com/ci/keystore
             make configs-from-config 
+            make eip-register
             make apply-network
             make apply-prep-module-vpc
             ./test/test-prep-module.sh
